@@ -1,0 +1,8 @@
+﻿services:
+  - type: web
+    name: fivestar-auth-server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node discord-bot.js
+    healthCheckPath: /api/v1/health

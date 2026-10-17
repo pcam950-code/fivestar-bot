@@ -1,0 +1,12 @@
+﻿{
+  "name": "fivestar-auth-server",
+  "version": "2.0.1",
+  "description": "Fivestar Toolkit Central Cloud Auth & Discord Bot Server",
+  "main": "discord-bot.js",
+  "scripts": {
+    "start": "node discord-bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3"
+  }
+}
