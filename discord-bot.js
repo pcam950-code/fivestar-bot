@@ -21,12 +21,16 @@ const keyManager = require('./core/key_manager');
 const CONFIG_PATH = path.join(__dirname, 'config', 'discord-config.json');
 
 function loadConfig() {
+    let cfg = { token: '', clientId: '', guildId: '', ownerIds: [], allowAdminRole: true };
     try {
         if (fs.existsSync(CONFIG_PATH)) {
-            return JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'));
+            cfg = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'));
         }
     } catch (_) {}
-    return { token: '', clientId: '', guildId: '', ownerIds: [], allowAdminRole: true };
+    if (process.env.DISCORD_TOKEN) cfg.token = process.env.DISCORD_TOKEN.trim().replace(/^["']|["']$/g, '');
+    if (process.env.CLIENT_ID) cfg.clientId = process.env.CLIENT_ID.trim().replace(/^["']|["']$/g, '');
+    if (process.env.GUILD_ID) cfg.guildId = process.env.GUILD_ID.trim().replace(/^["']|["']$/g, '');
+    return cfg;
 }
 
 function saveConfig(cfg) {
@@ -481,17 +485,23 @@ function startBot() {
     startAuthServer();
 
     const cfg = loadConfig();
-    if (!cfg.token) {
+    const token = (process.env.DISCORD_TOKEN || cfg.token || '').trim().replace(/^["']|["']$/g, '');
+
+    if (!token) {
         console.log(`\n======================================================`);
-        console.log(`  [DISCORD BOT NOTICE] No Bot Token Configured!`);
-        console.log(`  Please enter your Discord Bot Token in:`);
-        console.log(`  >> ${CONFIG_PATH}`);
+        console.log(`  [DISCORD BOT NOTICE] No Bot Token Found!`);
+        console.log(`  Please set DISCORD_TOKEN in Render Environment Variables`);
         console.log(`======================================================\n`);
         return null;
     }
 
-    client.login(cfg.token).catch(err => {
+    console.log(`[BOT] Attempting login (token length: ${token.length})...`);
+    client.login(token).catch(err => {
         console.error('[DISCORD BOT LOGIN ERROR]', err.message);
+        if (err.message.includes('token')) {
+            console.error('👉 TIP: If you committed your token to a public GitHub repo, Discord automatically revoked it!');
+            console.error('👉 Please click "Reset Token" in Discord Developer Portal and paste the new token into Render.');
+        }
     });
 
     return client;
