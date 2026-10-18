@@ -10,46 +10,37 @@
     "note": "Fivestar Master Developer Lifetime Key"
   },
   {
+    "key": "FIVESTAR-6950-0CE4-6951",
+    "status": "active",
+    "duration": "lifetime",
+    "createdAt": "2026-10-17T23:51:40.635Z",
+    "expiresAt": null,
+    "createdBy": "owner",
+    "claimedBy": null,
+    "hwid": null,
+    "note": "Friend Lifetime Key",
+    "lastUsed": null
+  },
+  {
+    "key": "FIVESTAR-FRIEND-LIFETIME-PASS",
+    "status": "active",
+    "duration": "lifetime",
+    "createdAt": "2026-10-17T23:55:00.000Z",
+    "expiresAt": null,
+    "createdBy": "owner",
+    "claimedBy": null,
+    "hwid": null,
+    "note": "Friend Universal Lifetime Pass",
+    "lastUsed": null
+  },
+  {
     "key": "KOUPE-OWNER-LIFETIME-DEV",
     "status": "active",
     "duration": "lifetime",
     "createdAt": "2026-10-17T21:41:23.565Z",
     "expiresAt": null,
     "createdBy": "system",
-    "hwid": "4A06-5206-7AC7-7BD7",
-    "note": "Master Developer Lifetime Key",
-    "lastUsed": "2026-10-17T22:07:10.370Z",
-    "lastReset": "2026-10-17T21:51:07.717Z",
-    "machineOs": "win32",
-    "machineName": "aura"
-  },
-  {
-    "key": "KOUPE-A0A6-BA5B-8780",
-    "status": "active",
-    "duration": "30d",
-    "createdAt": "2026-10-17T21:41:23.567Z",
-    "expiresAt": "2026-11-16T22:41:23.567Z",
-    "createdBy": "owner",
-    "claimedBy": null,
-    "hwid": "4A06-5206-7AC7-7BD7",
-    "note": "Test VIP",
-    "lastUsed": "2026-10-17T22:46:23.417Z",
-    "machineOs": "win32",
-    "machineName": "aura"
-  },
-  {
-    "key": "KOUPE-5158-3E55-A6B2",
-    "status": "revoked",
-    "duration": "lifetime",
-    "createdAt": "2026-10-17T22:20:27.188Z",
-    "expiresAt": null,
-    "createdBy": "kaicebat2",
-    "claimedBy": "kaicebat2",
-    "hwid": "4A06-5206-7AC7-7BD7",
-    "note": "AURA",
-    "lastUsed": "2026-10-17T22:20:35.177Z",
-    "machineOs": "win32",
-    "machineName": "aura",
-    "revokedAt": "2026-10-17T22:32:17.391Z"
+    "hwid": null,
+    "note": "Legacy Master Key"
   }
 ]

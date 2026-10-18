@@ -469,6 +469,24 @@ function startAuthServer(customPort) {
             return;
         }
 
+        // 5. Generate New Key via API
+        if (pathname === '/api/v1/keys/create') {
+            const duration = parsedUrl.searchParams.get('duration') || 'lifetime';
+            const note = parsedUrl.searchParams.get('note') || 'Generated via Web/API';
+            const newKey = keyManager.createKey({ duration, note, createdBy: 'admin_api' });
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, key: newKey.key, keyData: newKey }));
+            return;
+        }
+
+        // 6. List all keys via API
+        if (pathname === '/api/v1/keys/list') {
+            const keys = keyManager.getAllKeys();
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, keys }));
+            return;
+        }
+
         // Fallback 404
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Endpoint not found' }));
